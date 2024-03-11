@@ -1,0 +1,110 @@
+{% extends 's_base.html' %}  
+{% block content %} 
+
+<div class="container mt-5">
+    <header>
+   
+        <!-- Heading -->
+        <div class="bg-primary">
+          <div class="container py-4">
+            <!-- Breadcrumb -->
+            <nav class="d-flex">
+              <h6 class="mb-0">
+                <a href="" class="text-white-50">Home</a>
+                <span class="text-white-50 mx-2"> > </span>
+                <a href="" class="text-white-50">Library</a>
+                <span class="text-white-50 mx-2"> > </span>
+                <a href="" class="text-white"><u>Data</u></a>
+              </h6>
+            </nav>
+            <!-- Breadcrumb -->
+          </div>
+        </div>
+        <!-- Heading -->
+      </header>
+      
+      <!-- content -->
+      <section class="py-5">
+        <div class="container">
+          <div class="row gx-5">
+            <aside class="col-lg-6">
+            {% for item in shop %}  
+              <div class="d-flex justify-content-center mb-3">
+                <a data-fslightbox="mygalley" class="border mx-1 rounded-2" target="_blank" data-type="image" href="#" class="item-thumb">
+                  <img height="400px" class="rounded-2" src="/static/images/{{item.image}}" />
+                </a>
+              </div>
+              <!-- thumbs-wrap.// -->
+              <!-- gallery-wrap .end// -->
+            </aside>
+            <main class="col-lg-6">
+              <div class="ps-lg-3">
+                <h4 class="title ">
+                <span class="badge bg-secondary">{{item.itemsid.name}}</span>
+                </h4>
+                <div class="d-flex flex-row my-3">
+                  <div class="text-warning mb-1 me-2">
+                    <span class="ms-1">
+                    {{item.qty}}
+                    </span>
+                  </div>
+                  <span class="text-success ms-2">In stock</span>
+                </div>
+      
+                <div class="mb-3">
+                  <span class="h5">SAR {{item.price}}</span>
+                 
+                </div>
+      
+      
+                <div class="row">
+                  <dt class="col-3">Type:</dt>
+                  <dd class="col-9">{{item.cata}}</dd>
+      
+                  <dt class="col-3">Color</dt>
+                  <dd class="col-9">{{item.color}}</dd>
+      
+                  <dt class="col-3">Brand</dt>
+                  <dd class="col-9">apple</dd>
+                </div>
+      
+                <hr />
+      
+                <div class="row mb-4">
+                  <div class="col-md-4 col-6">
+                    <label class="mb-2">Size</label>
+                    <select class="form-select border border-secondary" style="height: 35px;">
+                      <option>Small</option>
+                      <option>Medium</option>
+                      <option>Large</option>
+                    </select>
+                  </div>
+                  <!-- col.// -->
+                  <div class="col-md-4 col-6 mb-3">
+                    <label class="mb-2 d-block">Quantity</label>
+                    <div class="input-group mb-3" style="width: 170px;">
+                      <button class="btn btn-white border border-secondary px-3" type="button" id="button-addon1" data-mdb-ripple-color="dark">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                      <input type="text" class="form-control text-center border border-secondary" placeholder="14" aria-label="Example text with button addon" aria-describedby="button-addon1" />
+                      <button class="btn btn-white border border-secondary px-3" type="button" id="button-addon2" data-mdb-ripple-color="dark">
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <a href="{% url 's_checkout' id=item.id %}" class="btn btn-warning shadow-0"> Buy now </a>
+                <a href="{% url 's_add_to_cart' id=item.id %}" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart </a>
+              </div>
+            </main>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+      <!-- content -->
+      
+      
+      
+      
+</div>
+{% endblock %}
